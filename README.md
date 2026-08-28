@@ -73,17 +73,44 @@ Example response:
 ```text
 .
 ├── index.html          Vite HTML entry point
-├── server.js           Express API entry point
+├── server.js           Backward-compatible API entry point
+├── backend/
+│   ├── app.js           Express application composition
+│   ├── server.js        API process entry point
+│   ├── config/          Environment configuration
+│   ├── data/            Development seed data
+│   ├── db/              File-backed persistence adapter
+│   ├── middleware/      Error and 404 handling
+│   ├── repositories/    Product data access
+│   ├── routes/          Health, catalog, and workflow routes
+│   ├── services/        Catalog and search business logic
+│   └── validators/      Product request validation
 ├── src/
-│   ├── main.jsx        React application and catalog interactions
-│   └── styles.css      Application styling and responsive layout
+│   ├── api/             Frontend API client
+│   ├── main.jsx         React application and catalog interactions
+│   └── styles.css       Application styling and responsive layout
 ├── vite.config.js      Vite configuration
 └── package.json        Scripts and dependencies
 ```
 
 ## Current Data Layer
 
-The catalog currently uses representative in-memory product data in `src/main.jsx` so the administration workflow can be explored immediately. The Express server exposes a health check only; persistence, Elasticsearch indexing, authentication, and third-party REST integrations are ready to be added behind the existing UI and API boundaries.
+The catalog uses a JSON-backed development store at `backend/data/products.json`. This keeps the project runnable without infrastructure while preserving a repository boundary for a production database. Elasticsearch search is supported when `ELASTICSEARCH_URL` is configured; otherwise the service performs a local repository search. Authentication, migrations, and third-party integrations remain application extensions.
+
+## API
+
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/health` | Service health check |
+| `GET` | `/api/products` | List, search, filter, and paginate products |
+| `GET` | `/api/products/stats` | Return catalog metrics |
+| `GET` | `/api/products/:sku` | Get one product |
+| `POST` | `/api/products` | Create a product |
+| `PATCH` | `/api/products/:sku` | Update a product |
+| `DELETE` | `/api/products/:sku` | Delete a product |
+| `POST` | `/api/workflows/publish` | Bulk publish products by SKU |
+
+Product listing accepts `search`, `status`, `page`, and `pageSize` query parameters.
 
 ## Production Build
 

@@ -1,0 +1,8 @@
+[
+  { "name": "Aero Runner Mesh", "sku": "NR-2084", "category": "Footwear", "status": "Published", "updated": "Today, 09:42", "channels": ["Web", "App", "Retail"], "tone": "blue" },
+  { "name": "Field Utility Overshirt", "sku": "NR-1940", "category": "Apparel", "status": "In review", "updated": "Today, 08:16", "channels": ["Web", "App"], "tone": "olive" },
+  { "name": "Transit Pack 24L", "sku": "NR-1837", "category": "Accessories", "status": "Published", "updated": "Yesterday", "channels": ["Web", "Retail"], "tone": "orange" },
+  { "name": "Cloudweight Hoodie", "sku": "NR-2211", "category": "Apparel", "status": "Draft", "updated": "Yesterday", "channels": ["Web"], "tone": "plum" },
+  { "name": "Meridian Trail Shell", "sku": "NR-1762", "category": "Outerwear", "status": "Published", "updated": "Aug 24, 2026", "channels": ["Web", "App", "Retail"], "tone": "teal" },
+  { "name": "Daily Carry Sling", "sku": "NR-2048", "category": "Accessories", "status": "Needs attention", "updated": "Aug 23, 2026", "channels": ["Web"], "tone": "yellow" }
+]
